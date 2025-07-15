@@ -2,8 +2,9 @@
 const apiService = (function () {
   "use strict";
 
-  let token = null;
+  let token = localStorage.getItem("token");
   const module = {};
+
 
   /*  ******* Data types *******
     image objects must have at least the following attributes:
@@ -69,6 +70,7 @@ const apiService = (function () {
 
   module.voidToken = function () {
     token = null;
+    localStorage.removeItem("token");
   };
 
   // delete an image from the gallery given its imageId
@@ -110,7 +112,7 @@ const apiService = (function () {
 
   module.signout = function () {
     return createRequest("/api/users/signout", "DELETE").then(
-      () => (token = null),
+      module.voidToken
     );
   };
 
@@ -119,7 +121,10 @@ const apiService = (function () {
       return createRequest(`/api/users/${action}`, "POST", {
         username,
         password,
-      }).then((res) => (token = res.token));
+      }).then((res) => {
+          token = res.token;
+          localStorage.setItem("token", res.token);
+      });
   };
 
   module.me = function () {

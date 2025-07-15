@@ -1,0 +1,36 @@
+{
+  "name": "a2-jyarn",
+  "version": "1.0.0",
+  "description": "[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/Hc1JZ2U-) # Web Gallery: Backend",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UTSC-CSCC09-Programming-on-the-Web/a2-Jyarn.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UTSC-CSCC09-Programming-on-the-Web/a2-Jyarn/issues"
+  },
+  "homepage": "https://github.com/UTSC-CSCC09-Programming-on-the-Web/a2-Jyarn#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "multer": "^2.0.1",
+    "path": "^0.12.7",
+    "sequelize": "^6.37.7",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.28.0",
+    "eslint": "^9.28.0",
+    "globals": "^16.2.0",
+    "nodemon": "^3.1.10",
+    "prettier": "^3.5.3"
+  },
+  "type": "module"
+}

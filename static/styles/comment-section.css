@@ -1,0 +1,53 @@
+.comment-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-form-top {
+  display: flex;
+  flex-direction: auto;
+}
+
+.comment-body-form {
+  field-sizing: content;
+  resize: none;
+  margin-right: 13px;
+  margin-top: 1px;
+}
+
+.comment {
+  border: solid var(--content-border-colour) 1px;
+  border-radius: 5px;
+  margin: 2px;
+  padding: 5px;
+}
+
+.comment-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+}
+
+.comment-info-end {
+  display: flex;
+}
+
+.delete-comment-icon {
+  background: url("/media/recycle-bin.png");
+  background-size: var(--icon-size);
+  object-fit: contain;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  margin: 0em 0.3em;
+}
+
+.delete-comment-icon:hover {
+  filter: invert(29%) sepia(97%) saturate(609%) hue-rotate(320deg)
+    brightness(91%) contrast(92%);
+}
+
+.comment-body {
+  padding: 0em 0.8em;
+  word-break: break-all;
+}

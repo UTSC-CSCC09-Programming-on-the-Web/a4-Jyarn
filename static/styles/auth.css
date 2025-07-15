@@ -1,0 +1,28 @@
+.auth-container {
+  border: medium solid black;
+  margin: 75px auto;
+  flex-direction: column;
+  width: 70%;
+  min-width: 20em;
+  border-radius: 10px;
+  background: #f0f0f0;
+  padding: 0px 30px 20px 20px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.auth-submit {
+  max-width: 5em;
+  font-size: 0.8em;
+  border-radius: 3px;
+  background: #ececec;
+  padding: 3px;
+}
+
+.auth-input {
+  border-radius: 3px;
+}

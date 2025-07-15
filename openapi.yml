@@ -1,0 +1,312 @@
+openapi: 3.0.0
+info:
+  title: Web Gallery API
+  version: 1.0.0
+  description: API for managing users, images, and comments in the Web Gallery application.
+servers:
+  - url: http://localhost:3000/api
+paths:
+  /api/users/signup:
+    post:
+      summary: Sign up a new user.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: The username for the new user.
+                password:
+                  type: string
+                  description: The password for the new user.
+      responses:
+        "200":
+          description: User successfully signed up.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+                  token:
+                    type: string
+        "422":
+          description: User Creation Failed.
+        "400":
+          description: Invalid input.
+  /api/users/signin:
+    post:
+      summary: Sign in an existing user.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: The username of the user.
+                password:
+                  type: string
+                  description: The password of the user.
+      responses:
+        "200":
+          description: User successfully signed in.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userId:
+                    type: integer
+                  token:
+                    type: string
+        "401":
+          description: Invalid username or password.
+  /api/users/signout:
+    delete:
+      summary: Sign out the current user and destroy bearer token.
+      responses:
+        "200":
+          description: User successfully signed out.
+        "500":
+          description: Unexpected error occurred.
+  /api/users/me:
+    get:
+      summary: Get the current user's user id.
+      responses:
+        "200":
+          description: User information retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+  /api/users/{userId}/images:
+    get:
+      summary: Get images from a user's gallery.
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID of the user.
+        - name: cursor
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Cursor for pagination. Use -1 for the most recent image.
+        - name: action
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [prev, next]
+          description: Pagination action.
+      responses:
+        "200":
+          description: Images retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  image:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      title:
+                        type: string
+                      author:
+                        type: string
+                      date:
+                        type: string
+                        format: date-time
+                  next_cursor:
+                    type: integer
+                  count:
+                    type: integer
+        "400":
+          description: Invalid input data.
+        "422":
+          description: Invalid action.
+  /api/images:
+    post:
+      summary: Add a new image to the gallery.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: Title of the image.
+                picture:
+                  type: string
+                  format: binary
+                  description: Image file to upload.
+      responses:
+        "200":
+          description: Image successfully added.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  imageId:
+                    type: integer
+        "400":
+          description: Invalid input data.
+        "422":
+          description: Failed to post image.
+  /api/images/{id}/image:
+    get:
+      summary: Retrieve the image file.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID of the image.
+      responses:
+        "200":
+          description: Image file retrieved successfully.
+          content:
+            image/png: {}
+            image/jpeg: {}
+            image/gif: {}
+            image/webp: {}
+        "400":
+          description: Invalid image ID.
+        "404":
+          description: Image not found.
+        "403":
+          description: Forbidden.
+  /api/users:
+    get:
+      summary: Retrieve all user galleries and respective thumbnail images
+      responses:
+        "200":
+          description: Success.
+  /api/images/{id}:
+    delete:
+      summary: Delete an image from the gallery.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID of the image to delete.
+      responses:
+        "200":
+          description: Image successfully deleted.
+        "403":
+          description: Forbidden.
+        "404":
+          description: Image not found.
+  /api/images/{imageId}/comments:
+    post:
+      summary: Add a comment to an image.
+      parameters:
+        - name: imageId
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID of the image to comment on.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: Content of the comment.
+      responses:
+        "200":
+          description: Comment successfully added.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  commentId:
+                    type: integer
+        "400":
+          description: Invalid input data.
+        "422":
+          description: Failed to post comment.
+    get:
+      summary: Retrieve comments for an image.
+      parameters:
+        - name: imageId
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID of the image.
+        - name: page
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Page number for pagination.
+      responses:
+        "200":
+          description: Comments retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  comments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        content:
+                          type: string
+                        author:
+                          type: string
+                        date:
+                          type: string
+                          format: date-time
+                  count:
+                    type: integer
+        "400":
+          description: Invalid input data.
+  /api/comments/{commentId}:
+    delete:
+      summary: Delete a comment.
+      parameters:
+        - name: commentId
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID of the comment to delete.
+      responses:
+        "200":
+          description: Comment successfully deleted.
+        "400":
+          description: Invalid comment id.
+        "404":
+          description: Comment not found.

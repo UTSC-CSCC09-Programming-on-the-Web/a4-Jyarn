@@ -1,0 +1,99 @@
+:root {
+  --content-border-colour: #c7c7c7;
+  --icon-size: 1.2em;
+}
+
+body {
+  padding-bottom: 150px;
+  font-size: 1.1rem;
+  font-family: "Helvetica";
+}
+
+html * {
+}
+
+textarea,
+input {
+  border: solid black 1px;
+  font-size: 1.1rem;
+  font-family: "Helvetica";
+}
+
+textarea,
+input {
+  border-radius: 5px;
+}
+
+button {
+  padding: 0px 10px;
+  margin: 1px 1px;
+  border-radius: 5px;
+  border: solid black 1px;
+  background-color: #f7f7f7;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-elem {
+  display: flex;
+  gap: 0 1em;
+}
+
+.elem {
+  padding: 0px 15px;
+  margin: 15px 0px;
+}
+
+.prev-button {
+  transform: scaleX(-1);
+}
+
+.next-button {
+  background: url("/media/right.png");
+  background-size: var(--icon-size);
+  object-fit: contain;
+  width: var(--icon-size);
+  height: var(--icon-size);
+}
+
+.next-button:hover {
+  filter: drop-shadow(5px 5px 5px);
+  opacity: 80%;
+}
+
+button:hover {
+  opacity: 80%;
+}
+
+.showing-of {
+  margin: 0px 5px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.message {
+  font-size: 1.1em;
+  font-weight: 900;
+  text-decoration: underline 1px;
+}
+
+.fade-in {
+  animation-name: fade-in-animation;
+  animation-duration: 0.2s;
+}
+
+@keyframes fade-in-animation {
+  0% {
+    opacity: 75%;
+    scale: 90%;
+  }
+  100% {
+    opacity: 100%;
+    scale: 100%;
+  }
+}

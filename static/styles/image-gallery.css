@@ -1,0 +1,35 @@
+.image {
+  max-width: 100%;
+  max-height: 95vh;
+  border: black solid 1px;
+  object-fit: scale-down;
+  margin: 10px auto;
+}
+
+.image-url-form {
+  width: 20em;
+  margin: 0px 1px;
+}
+
+.image-title-form {
+  width: 30em;
+}
+
+.image-display {
+  /* redefine padding and margin so that the border doesn't extend
+   * across the whole screen */
+  padding: 10px 10px;
+  margin: 0px 10px;
+
+  border-top: solid var(--content-border-colour) 1px;
+  border-bottom: solid var(--content-border-colour) 1px;
+}
+
+.image-div {
+  text-align: center;
+}
+
+.image-title-and-name {
+  display: flex;
+  justify-content: space-between;
+}

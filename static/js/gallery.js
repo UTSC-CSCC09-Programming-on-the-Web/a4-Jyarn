@@ -79,7 +79,7 @@ const gallery = (function () {
     const hideDelete =
       thisUserId && (comment.userId === thisUserId || thisUserId === userId)
         ? ""
-        : "hidden";
+        : "blank";
 
     newComment.classList.add("comment");
     newComment.classList.add("fade-in");
@@ -169,7 +169,7 @@ const gallery = (function () {
     document
       .querySelector("#imageUploadContainer")
       .addEventListener("click", () => {
-        document.querySelector("#uploadImageInput").click();
+        document.querySelector("#imageUploadInput").click();
       });
 
     // hide/show image form button
@@ -212,8 +212,8 @@ const gallery = (function () {
 
         // text for the showing-of element
         const showingOfText = `Showing ${Math.min(comments.length, 10).toString()} of ${count} comments. Page ${pageNo + 1}`;
-        const hasNext = pageNo !== Math.ceil(count / 10) - 1 ? "" : "hidden";
-        const hasPrev = pageNo !== 0 ? "" : "hidden";
+        const hasNext = pageNo !== Math.ceil(count / 10) - 1 ? "" : "blank";
+        const hasPrev = pageNo !== 0 ? "" : "blank";
 
         commentSection.innerHTML = `
           <div class="showing-of">${showingOfText}</div>

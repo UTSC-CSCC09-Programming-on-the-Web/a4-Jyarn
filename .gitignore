@@ -9,3 +9,9 @@ uploads
 
 TODO.md
 a3/
+
+acme/
+certs/
+html/
+vhost/
+generate-ssl.sh

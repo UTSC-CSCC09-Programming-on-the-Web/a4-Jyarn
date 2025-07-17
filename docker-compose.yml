@@ -15,6 +15,10 @@ services:
   nginx-proxy-acme:
     image: nginxproxy/acme-companion
     container_name: nginx-proxy-acme
+    depends_on:
+      - nginx-proxy
+    volumes_from: 
+      - nginx-proxy
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./certs:/etc/nginx/certs
@@ -30,4 +34,5 @@ services:
     expose:
       - 3000
     environment:
-      - VIRTUAL_HOST=localhost
+      - VIRTUAL_HOST=webgallery.realafdasfdscompany.tech
+      - LETSENCRYPT_HOST=webgallery.realafdasfdscompany.tech

@@ -57,13 +57,17 @@
     <div id="gallery" class="hidden">
       <!-- Image Submission Form -->
       <div id="postImage" class="elem">
-        <div class="message">Post an image</div>
         <form id="imageForm" class="row">
+          <div id="imageUploadContainer" class="image-upload-container row">
+            <div class="image-upload-icon"></div>
+            <p class="image-upload-button">Upload a file</p>
+          </div>
           <input
+            id="imageUploadInput"
+            class="image-upload-input"
             placeholder="Image URL"
             type="file"
             name="picture"
-            class="image-url-form"
             required
           />
           <input
@@ -73,7 +77,12 @@
             class="image-title-form"
             required
           />
-          <button type="submit">Post</button>
+
+          <div id="postImageContainer" class="post-button-container">
+            <div class="post-icon"></div>
+            <button id="postImageButton" class="post-button" type="submit">Post</button>
+          </div>
+
         </form>
         <button id="hideImageFormButton" type="button">Hide</button>
       </div>
@@ -83,15 +92,15 @@
       <!-- Comment Form-->
       <div class="elem" id="commentContainer">
         <form class="comment-form" id="commentForm">
-          <div class="message">Comments</div>
           <textarea
             class="comment-body-form"
             name="body"
             placeholder="Leave a comment"
             required
           ></textarea>
-          <div class="comment-form-top">
-            <button type="submit">Post</button>
+          <div id="postCommentContainer" class="post-button-container">
+            <div class="post-icon"></div>
+            <button id="postCommentButton" class="post-button" type="submit">Post</button>
           </div>
         </form>
         <div class="elem" id="commentSection"></div>
@@ -134,6 +143,12 @@
             title="error icons"
             >Error icons created by Picons - Flaticon</a
           >
+        </li>
+        <li>
+          <a href="https://www.flaticon.com/free-icons/picture" title="picture icons">Picture icons created by SeyfDesigner - Flaticon</a>
+        </li>
+        <li>
+          <a href="https://www.flaticon.com/free-icons/paper-plane" title="paper plane icons">Paper plane icons created by sonnycandra - Flaticon</a>
         </li>
       </ul>
       Licensed by

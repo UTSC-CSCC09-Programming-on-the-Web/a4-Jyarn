@@ -154,6 +154,24 @@ const gallery = (function () {
         document.querySelector("#imageForm").reset();
       });
 
+    document
+      .querySelector("#postImageContainer")
+      .addEventListener("click", () => {
+        document.querySelector("#postImageButton").click();
+      })
+
+    document
+      .querySelector("#postCommentContainer")
+      .addEventListener("click", () => {
+        document.querySelector("#postCommentButton").click();
+      })
+
+    document
+      .querySelector("#imageUploadContainer")
+      .addEventListener("click", () => {
+        document.querySelector("#uploadImageInput").click();
+      })
+
     // hide/show image form button
     document
       .querySelector("#hideImageFormButton")
@@ -198,9 +216,9 @@ const gallery = (function () {
         const hasPrev = pageNo !== 0 ? "" : "hidden";
 
         commentSection.innerHTML = `
+          <div class="showing-of">${showingOfText}</div>
           <div class="row">
             <div id="prevCommentButton" class="prev-button next-button ${hasPrev}"></div>
-            <div class="showing-of">${showingOfText}</div>
             <div id="nextCommentButton" class="next-button ${hasNext}"></div>
           </div>
           `;
@@ -250,9 +268,9 @@ const gallery = (function () {
 
         const imageDate = new Date(image.date);
 
-        const hasPrev = imageNo !== 1 ? "" : "hidden";
-        const hasNext = imageNo !== count ? "" : "hidden";
-        const canDelete = thisUserId && thisUserId === userId ? "" : "hidden";
+        const hasPrev = imageNo !== 1 ? "" : "blank";
+        const hasNext = imageNo !== count ? "" : "blank";
+        const canDelete = thisUserId && thisUserId === userId ? "" : "blank";
 
         imageDisplay.innerHTML = `
           <div class="fade-in image-display">
@@ -268,12 +286,11 @@ const gallery = (function () {
 
           <!-- Additional Controls -->
           <div>
+            <div class="showing-of">Showing ${imageNo} of ${count} images</div>
             <div class="row">
               <div id="prevImageButton" class="prev-button next-button ${hasPrev}"></div>
-              <div class="showing-of">Showing ${imageNo} of ${count} images</div>
+              <button id="deleteImageButton" class="${canDelete}">Delete Image</button>
               <div id="nextImageButton" class="next-button ${hasNext}"></div>
-            </div>
-              <button id="deleteImageButton" class="col-1 ${canDelete}">Delete Image</button>
             </div>
           </div>
           `;

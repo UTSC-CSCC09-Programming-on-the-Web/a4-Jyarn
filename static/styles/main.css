@@ -37,6 +37,10 @@ button {
   justify-content: space-between;
 }
 
+.blank {
+  opacity: 0%;
+}
+
 .header-elem {
   display: flex;
   gap: 0 1em;

@@ -6,13 +6,36 @@
   margin: 10px auto;
 }
 
-.image-url-form {
-  width: 20em;
+.image-upload-container:hover {
+  opacity: 80%;
+}
+.image-upload-container {
+  border-radius: 10px;
+  padding: 5px 5px;
   margin: 0px 1px;
+  height: 3em;
+  display: flex;
+  width: 9em;
+  font-size: 0.7rem;
+  border: solid black 1px;
+}
+
+.image-upload-button {
+  margin: auto;
+}
+
+.image-upload-icon {
+  background: url("/media/image.png");
+  background-size: 2em;
+  width: 2em;
+  height: 2em;
+  object-fit: contain;
+  margin: auto;
 }
 
 .image-title-form {
   width: 30em;
+  border-radius: 10px;
 }
 
 .image-display {
@@ -32,4 +55,39 @@
 .image-title-and-name {
   display: flex;
   justify-content: space-between;
+}
+
+.post-button-container:hover {
+  opacity: 80%;
+}
+
+.post-button-container {
+  display: flex;
+  border: solid black 1px;
+  border-radius: 10px;
+  width: 7em;
+  font-size: 0.7rem;
+  padding: 0em 0.8em;
+  justify-content: center;
+}
+
+.post-icon {
+  background: url("/media/paper-plane.png");
+  background-size: 1.7em;
+  width: 2em;
+  height: 2em;
+  object-fit: contain;
+  background-repeat: no-repeat;
+  margin: auto 0px;
+}
+
+.post-button {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0em 0.5em;
+}
+
+.image-upload-input {
+  opacity: 0%; width: 0px; height: 0px;
 }

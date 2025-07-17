@@ -5,7 +5,6 @@ const apiService = (function () {
   let token = localStorage.getItem("token");
   const module = {};
 
-
   /*  ******* Data types *******
     image objects must have at least the following attributes:
         - (String) imageId
@@ -111,9 +110,7 @@ const apiService = (function () {
   };
 
   module.signout = function () {
-    return createRequest("/api/users/signout", "DELETE").then(
-      module.voidToken
-    );
+    return createRequest("/api/users/signout", "DELETE").then(module.voidToken);
   };
 
   module.authenticate = function (action, username, password) {
@@ -122,8 +119,8 @@ const apiService = (function () {
         username,
         password,
       }).then((res) => {
-          token = res.token;
-          localStorage.setItem("token", res.token);
+        token = res.token;
+        localStorage.setItem("token", res.token);
       });
   };
 

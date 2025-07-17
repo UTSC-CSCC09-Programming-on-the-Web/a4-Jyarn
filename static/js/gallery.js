@@ -158,19 +158,19 @@ const gallery = (function () {
       .querySelector("#postImageContainer")
       .addEventListener("click", () => {
         document.querySelector("#postImageButton").click();
-      })
+      });
 
     document
       .querySelector("#postCommentContainer")
       .addEventListener("click", () => {
         document.querySelector("#postCommentButton").click();
-      })
+      });
 
     document
       .querySelector("#imageUploadContainer")
       .addEventListener("click", () => {
         document.querySelector("#uploadImageInput").click();
-      })
+      });
 
     // hide/show image form button
     document
